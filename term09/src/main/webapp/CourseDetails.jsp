@@ -1,6 +1,10 @@
 <!--  수강 내역 -->
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <% request.setCharacterEncoding("UTF-8"); %>
+<%@ page import="Dao.Database" %>
+<%@ page import="java.sql.Connection" %>
+<%@ page import="java.sql.PreparedStatement" %>
+<%@ page import="java.sql.ResultSet" %>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="ko">
 <head>
@@ -71,28 +75,45 @@
                 <thead>
                     <tr>
                         <th>No</th>
-                        <th>년도/학기</th>
+                        <th>년도학기</th>
                         <th>학수번호</th>
                         <th>과목명</th>
-                        <th>재이수 여부</th>
                         <th>학점</th>
                         <th>담당교수</th>
-                        <th>강의시간</th>
-                        
+                        <th>강의 시간</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>2018/1</td>
-                        <td>20182018-01</td>
-                        <td>소프트웨어공학</td>
-                        <td></td>
-                        <td>3</td>
-                        <td>윤청</td>
-                        <td>10:00 ~ 12:00</td>
-                    </tr>
-                
+                	<%
+	                	Database dbCon = new Database();
+	            		Connection conn = dbCon.GetConnection();
+	            		try {
+	                		String sql = "select * from subject where lectureNumber = (select lectureNumber from course where studentID=?)";
+	            			PreparedStatement ps = conn.prepareStatement(sql);
+	            			ps.setString(1,"test");
+	            			ResultSet rs = ps.executeQuery();
+	            			int i=1;
+	            			
+	            			while(rs.next()) {
+	            				out.print("<tr>");
+	            				out.print("<td>"+i+"</td>");
+	            				out.print("<td>"+rs.getString("lectureSemester")+"</td>");
+	            				out.print("<td>"+rs.getString("lectureNumber")+"</td>");
+	            				out.print("<td>"+rs.getString("name")+"</td>");
+	            				out.print("<td>"+rs.getInt("creditHour")+"</td>");
+	            				out.print("<td>"+rs.getString("professor")+"</td>");
+	            				out.print("<td>"+rs.getString("lectureTime")+"</td>");
+	            				out.print("</tr>");
+	            				i++;
+	            			}
+	            			ps.close();
+	            			rs.close();
+	            			conn.close();
+	            		}
+	            		catch(Exception e ) {
+	            			System.out.print(e.getMessage());
+	            		}
+                	%>
                 </tbody>
             </table>
 		</div>
