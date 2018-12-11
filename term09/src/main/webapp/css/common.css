@@ -682,6 +682,7 @@ fieldset > * {float:left; margin-right:20px;}
 
 /* table */
 #grade-table {
+	text-align:center;
     border-collapse: collapse;
     width: 100%;
     border: 1px solid #333333;
