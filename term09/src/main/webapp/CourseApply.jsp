@@ -72,10 +72,7 @@
 		<div id="contents">
 			<h2 class="page-title">수강 신청</h2>
 			<form action="addCourse.jsp" method="post">
-				<select id="select-option" name="select-option">
-					<option value="0">학수번호</option>
-					<option value="1">과목명</option>
-				</select>
+				학수번호
 				<input type="text" id="applyValue" name="applyValue">
 				<input type="submit" class="search-btn" value="신청">
 			</form>
