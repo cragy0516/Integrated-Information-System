@@ -5,6 +5,9 @@
 <%@ page import="java.sql.Connection" %>
 <%@ page import="java.sql.PreparedStatement" %>
 <%@ page import="java.sql.ResultSet" %>
+<%	String searchOption = request.getParameter("option");
+	String searchValue = request.getParameter("search"); 
+%>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="ko">
 <head>
@@ -71,6 +74,15 @@
 	<div id="container">
 		<div id="contents">
 			<h2 class="page-title">수강 편람 조회</h2>
+			<form action="CourseReference.jsp" method="get">
+				<select name="option">
+					<option value="0">학수번호</option>
+					<option value="1">과목명</option>
+				</select>
+				<input type="text" name="search">
+				<input type="submit" class="search-btn" value="검색">
+			</form>
+			<br>
             <table id="grade-table">
                 <thead>
                     <tr>
@@ -85,8 +97,11 @@
                 </thead>
                 <tbody>
                 	<%
+                	
+                	if( searchValue == "" || searchValue == null){
 	                	Database dbCon = new Database();
 	            		Connection conn = dbCon.GetConnection();
+	            		
 	            		try {
 	                		String sql = "select * from subject";
 	            			PreparedStatement ps = conn.prepareStatement(sql);
@@ -112,6 +127,69 @@
 	            		catch(Exception e ) {
 	            			System.out.print(e.getMessage());
 	            		}
+                	}
+                	else {
+                		if( searchOption.equals("0") ) { // 학수번호로 검색
+                			Database dbCon = new Database();
+    	            		Connection conn = dbCon.GetConnection();
+    	            		
+    	            		try {
+    	                		String sql = "select * from subject where lectureNumber like '"+searchValue+"%'";
+    	            			PreparedStatement ps = conn.prepareStatement(sql);
+    	            			ResultSet rs = ps.executeQuery();
+    	            			int i=1;
+    	            			
+    	            			while(rs.next()) {
+    	            				out.print("<tr>");
+    	            				out.print("<td>"+i+"</td>");
+    	            				out.print("<td>"+rs.getString("lectureSemester")+"</td>");
+    	            				out.print("<td>"+rs.getString("lectureNumber")+"</td>");
+    	            				out.print("<td>"+rs.getString("name")+"</td>");
+    	            				out.print("<td>"+rs.getInt("creditHour")+"</td>");
+    	            				out.print("<td>"+rs.getString("professor")+"</td>");
+    	            				out.print("<td>"+rs.getString("lectureTime")+"</td>");
+    	            				out.print("</tr>");
+    	            				i++;
+    	            			}
+    	            			ps.close();
+    	            			rs.close();
+    	            			conn.close();
+    	            		}
+    	            		catch(Exception e ) {
+    	            			System.out.print(e.getMessage());
+    	            		}
+                		}
+                		else if( searchOption.equals("1") ) { // 과목명으로 검색
+                			Database dbCon = new Database();
+    	            		Connection conn = dbCon.GetConnection();
+    	            		
+    	            		try {
+    	                		String sql = "select * from subject where name like '"+searchValue+"%'";
+    	            			PreparedStatement ps = conn.prepareStatement(sql);
+    	            			ResultSet rs = ps.executeQuery();
+    	            			int i=1;
+    	            			
+    	            			while(rs.next()) {
+    	            				out.print("<tr>");
+    	            				out.print("<td>"+i+"</td>");
+    	            				out.print("<td>"+rs.getString("lectureSemester")+"</td>");
+    	            				out.print("<td>"+rs.getString("lectureNumber")+"</td>");
+    	            				out.print("<td>"+rs.getString("name")+"</td>");
+    	            				out.print("<td>"+rs.getInt("creditHour")+"</td>");
+    	            				out.print("<td>"+rs.getString("professor")+"</td>");
+    	            				out.print("<td>"+rs.getString("lectureTime")+"</td>");
+    	            				out.print("</tr>");
+    	            				i++;
+    	            			}
+    	            			ps.close();
+    	            			rs.close();
+    	            			conn.close();
+    	            		}
+    	            		catch(Exception e ) {
+    	            			System.out.print(e.getMessage());
+    	            		}
+                		}
+                	}
                 	%>
                 </tbody>
             </table>

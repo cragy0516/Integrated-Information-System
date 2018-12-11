@@ -71,15 +71,15 @@
 	<div id="container">
 		<div id="contents">
 			<h2 class="page-title">수강 신청</h2>
-			<form>
-				<select>
+			<form action="addCourse.jsp" method="post">
+				<select id="select-option" name="select-option">
 					<option value="0">학수번호</option>
 					<option value="1">과목명</option>
 				</select>
-				<input type="text" name="search" />
-				<input type="submit" value="신청"/>
+				<input type="text" id="applyValue" name="applyValue">
+				<input type="submit" class="search-btn" value="신청">
 			</form>
-			<br/>
+			<br><br>
             <table id="grade-table">
                 <thead>
                     <tr>
@@ -97,7 +97,7 @@
 	                	Database dbCon = new Database();
 	            		Connection conn = dbCon.GetConnection();
 	            		try {
-	                		String sql = "select * from subject";
+	                		String sql = "select * from subject where lectureSemester='2018/2학기'";
 	            			PreparedStatement ps = conn.prepareStatement(sql);
 	            			ResultSet rs = ps.executeQuery();
 	            			int i=1;
