@@ -12,12 +12,16 @@ public class userService {
 		Connection conn = dbCon.GetConnection();
 		PreparedStatement ps = null;
 		ResultSet rs = null;
+		String originPW = null;
 		try {
 			String getQuery="select password from user where id=?";
 			ps = conn.prepareStatement(getQuery);
 			ps.setString(1, userID);
 			rs = ps.executeQuery();
-			return rs.getString("password");
+			while(rs.next()) {
+				originPW = rs.getString("password");
+			}
+			return originPW;
 		}
 		catch(Exception e ) {
 			System.out.print(e.getMessage());
