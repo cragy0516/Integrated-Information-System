@@ -61,7 +61,11 @@ public class AuthFilter implements Filter {
 			"EnrollmentInformationFaculty.jsp",
 			"PersonalInformationFaculty.jsp",
 			"ResponsibilitySubject.jsp",
-			"editPersonalInfoAction"
+			"editPersonalInfoAction",
+			"LecturePlan.jsp",
+			"ClassStudent.jsp",
+			"addLecturePlan.jsp",
+			"updategrade.jsp",
 		};
 		final String[] ADMIN_MENU_LIST = {
 			"giveNumber.jsp",
