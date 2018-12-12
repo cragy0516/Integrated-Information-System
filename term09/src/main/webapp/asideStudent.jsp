@@ -46,7 +46,7 @@
 					<li><a href="ScholarshipList.jsp">장학금 수여 내역</a></li>
 				</ul>
 			</li>
-		<li id="logoutLi"><a href="logout.jsp">로그아웃</a></li>
+		<li id="logoutLi"><a href="logoutAction.jsp">로그아웃</a></li>
 		</ul>
 	</div>
 	
