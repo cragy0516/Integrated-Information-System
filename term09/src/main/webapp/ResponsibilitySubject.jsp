@@ -54,7 +54,7 @@
 	            				out.print("<td>"+rs.getString("lectureNumber")+"</td>");
 	            				out.print("<td>"+rs.getString("name")+"</td>");
 	            				out.print("<td><a href="+"ClassStudent.jsp"+"?lectureNumber="+rs.getString("lectureNumber")+" method='post'>관리</a></td>");
-	            				out.print("<td><a href="+"LecturePlan.jsp"+">관리</a></td>");
+	            				out.print("<td><a href="+"LecturePlan.jsp"+"?lectureNumber="+rs.getString("lectureNumber")+" method='post'>관리</a></td>");
 	            				out.print("</tr>");
 	            				i++;
 	            			}

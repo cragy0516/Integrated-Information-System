@@ -22,6 +22,7 @@
 	<div id="container">
 		<div id="contents">
 			<h2 class="page-title">강의계획서 수정</h2>
+			<% String lectureNumber = request.getParameter("lectureNumber"); %>
 			<form action="addLecturePlan.jsp" method="post">
             <table>
             	<tr>
@@ -43,6 +44,7 @@
             	<td><input type="text" id="content" name="content" style="width: 100%"></td>
             	</tr>
             </table>
+            <input type="hidden" id="lectureNum" name="lectureNum" value=<%=lectureNumber%>>
             <input type="submit" class="search-btn" value="저장">
             </form>
 		</div>

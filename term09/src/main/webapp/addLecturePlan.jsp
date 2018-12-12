@@ -9,6 +9,7 @@
 	String presubject = request.getParameter("presubject");
 	String ratio = request.getParameter("ratio");
 	String content = request.getParameter("content");
+	String lectureNumber = request.getParameter("lectureNum");
 	Database dbCon = new Database();
 	Connection conn = dbCon.GetConnection();
 	boolean result = false;
@@ -19,7 +20,7 @@
 		ps.setString(2,presubject);
 		ps.setString(3,ratio);
 		ps.setString(4,content);
-		ps.setString(5,"14770-01");
+		ps.setString(5,lectureNumber);
 		ps.executeUpdate();
 		ps.close();
 		conn.close();
