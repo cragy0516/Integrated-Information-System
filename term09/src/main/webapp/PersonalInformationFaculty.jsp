@@ -18,26 +18,39 @@
 	<jsp:include page="asideStudent.jsp"></jsp:include>
 	<div id="container">
 		<div id="contents">
-			<h2 class="page-title">장학금 수여 내역</h2>
-            <table id="grade-table">
-                <thead>
-                    <tr>
-                        <th>No</th>
-                        <th>년도/학기</th>
-                        <th>장학명</th>
-                        <th>장학금 합계</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>2018/1</td>
-                        <td>백마복지</td>
-                        <td>1,000,000</td>
-                    </tr>
-                
-                </tbody>
-            </table>
+			<h2 class="page-title">기본 정보 관리</h2>
+
+			<div class="ipt mt0">
+				<h3>이름</h3>
+				<span class="box">
+					<input type="text" id="ipt-name" class="ipt-txt" value="이미진" disabled />
+				</span>
+				<button class="btn-cancel">취소</button>
+			</div>
+			<div class="ipt">
+				<h3>핸드폰 번호</h3>
+				<span class="box">
+					<input type="text" id="ipt-phone" class="ipt-txt" title="담당자 연락처" value="01012345678" />
+					<button class="btn-save">저장</button>
+				</span>
+				<button class="btn-cancel">취소</button>
+			</div>
+            <div class="ipt">
+				<h3>이메일</h3>
+				<span class="box">
+					<input type="text" id="ipt-phone" class="ipt-txt" title="담당자 연락처" value="01012345678" />
+					<button class="btn-save">저장</button>
+				</span>
+				<button class="btn-cancel">취소</button>
+			</div>
+            <div class="ipt">
+				<h3>주소</h3>
+				<span class="box">
+					<input type="text" id="ipt-phone" class="ipt-txt" title="담당자 연락처" value="01012345678" />
+					<button class="btn-save">저장</button>
+				</span>
+				<button class="btn-cancel">취소</button>
+			</div>
 		</div>
 	</div>
 </div>

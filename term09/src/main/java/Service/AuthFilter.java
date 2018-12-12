@@ -39,6 +39,7 @@ public class AuthFilter implements Filter {
 		
 		final String LOGIN_PAGE = "login.jsp";
 		final String LOGIN_ACTION_PAGE = "loginAction.jsp";
+		final String LOGOUT_PAGE = "logoutAction.jsp";
 		final String STUDENT_BASE_PAGE = "EnrollmentInformation.jsp";
 		final String FACULTY_BASE_PAGE = "EnrollmentInformationFaculty.jsp";
 		final String ADMIN_BASE_PAGE = "EnrollmentInformation.jsp"; // todo
@@ -58,6 +59,9 @@ public class AuthFilter implements Filter {
 			"PersonalInformaionFaculty.jsp",
 			"ResponsibilitySubject.jsp"
 		};
+		final String[] ADMIN_MENU_LIST = {
+			""
+		};
 		
 		HttpServletRequest httpRequest = (HttpServletRequest) request;
 		HttpServletResponse httpResponse = (HttpServletResponse) response;
@@ -66,7 +70,8 @@ public class AuthFilter implements Filter {
 		String uri = httpRequest.getRequestURI();
 		
 		if (uri.indexOf(LOGIN_PAGE) < 0 &&
-			uri.indexOf(LOGIN_ACTION_PAGE) < 0) {
+			uri.indexOf(LOGIN_ACTION_PAGE) < 0 &&
+			uri.indexOf(LOGOUT_PAGE) < 0) {
 			if (session == null) {
 				httpResponse.sendRedirect(LOGIN_PAGE);
 			} else {
