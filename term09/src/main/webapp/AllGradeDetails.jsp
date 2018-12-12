@@ -114,9 +114,6 @@
 							<td></td>
 							<td></td>
 							<td>총 평점</td>
-							<%
-								System.out.println("tttt: " + total_sub);
-							%>
 							<td><%=total_grade / total_sub%></td>
 						</tr>
 					</tbody>
