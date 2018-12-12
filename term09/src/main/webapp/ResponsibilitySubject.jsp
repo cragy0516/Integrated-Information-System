@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <% request.setCharacterEncoding("UTF-8"); %>
+<%@ page import="Dao.Database" %>
+<%@ page import="java.sql.Connection" %>
+<%@ page import="java.sql.PreparedStatement" %>
+<%@ page import="java.sql.ResultSet" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko">
 <head>
@@ -18,6 +22,10 @@
 	<div id="container">
 		<div id="contents">
 			<h2 class="page-title">담당 과목 내역</h2>
+			<% 
+				Object s_name = session.getAttribute("sessionNAME");
+				String name = String.valueOf(s_name);
+			%>
             <table id="grade-table">
                 <thead>
                     <tr>
@@ -29,14 +37,35 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>1234500</td>
-                        <td>자료구조및설계</td>
-                        <td><a href="ClassStudent.jsp">관리</a></td>
-                        <td><a href="LecturePlan.jsp">관리</a></td>
-                    </tr>
-                
+                <%
+	                	Database dbCon = new Database();
+	            		Connection conn = dbCon.GetConnection();
+	            		try {
+	                		String sql = "select * from subject where professor = ?";
+	            			PreparedStatement ps = conn.prepareStatement(sql);
+	            			ps.setString(1, name);
+	            			ResultSet rs = ps.executeQuery();
+	            			
+	            			int i=1;
+	            			
+	            			while(rs.next()) {
+	            				out.print("<tr id = "+rs.getString("lectureNumber")+">");
+	            				out.print("<td>"+i+"</td>");
+	            				out.print("<td>"+rs.getString("lectureNumber")+"</td>");
+	            				out.print("<td>"+rs.getString("name")+"</td>");
+	            				out.print("<td><a href="+"ClassStudent.jsp"+">관리</a></td>");
+	            				out.print("<td><a href="+"LecturePlan.jsp"+">관리</a></td>");
+	            				out.print("</tr>");
+	            				i++;
+	            			}
+	            			ps.close();
+	            			rs.close();
+	            			conn.close();
+	            		}
+	            		catch(Exception e ) {
+	            			System.out.print(e.getMessage());
+	            		}
+                	%>
                 </tbody>
             </table>
 		</div>
