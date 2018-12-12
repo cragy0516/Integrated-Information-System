@@ -16,7 +16,7 @@
 	Connection conn = dbCon.GetConnection();
 	boolean result = false;
 	String originDB = us.checkOrigin(userID);
-	if( originDB == originPassword ) {
+	if( originDB.equals(originPassword)) {
 		try {
 			String sql = "update user set password=? where id=?";
 			PreparedStatement ps = conn.prepareStatement(sql);
