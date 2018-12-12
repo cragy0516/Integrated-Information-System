@@ -712,7 +712,9 @@ fieldset > * {float:left; margin-right:20px;}
 .plan-input {
 	width:100%;	
 }
-
-.tmp {
-	
+ 
+.line {
+	border-bottom:1px solid gray;
+	width: 100%;
+	margin-bottom:10px;
 }

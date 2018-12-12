@@ -34,33 +34,49 @@
 <body>
 <div id="wrap">
 	<jsp:include page="header.jsp"></jsp:include>
-	<jsp:include page="asideStudent.jsp"></jsp:include>
+	<jsp:include page="asideAdmin.jsp"></jsp:include>
 	<div id="container">
 		<div id="contents">
 			<h2 class="page-title">학번 부여</h2>
 				<br>
 				<form action="addUser.jsp" method="post">
-					이름 <input type="text" class="plan-input" name="name"><br>
-					아이디(학번) <input type="text" class="plan-input" name="name"><br>
-					패스워드 <input type="password" class="plan-input" name="password"><br>
-					성별 <input type="text" class="plan-input" name="sex"><br>
-					연락처 <input type="tel" class="plan-input" name="phone"><br>
-					생년월일 <input type="date" class="plan-input" name="birth"><br>
-					주소 <input type="text" class="plan-input" name="address"><br>
-					이메일 <input type="email" class="plan-input" name="email"><br>
-					<p>---------------------------------------------------</p>
-					<select name="division">
+					이름 <input type="text" class="plan-input" name="name"><br><br>
+					아이디(학번) <input type="text" class="plan-input" name="name"><br><br>
+					패스워드 <input type="password" class="plan-input" name="password"><br><br>
+					성별 <input type="text" class="plan-input" name="sex"><br><br>
+					연락처 <input type="tel" class="plan-input" name="phone"><br><br>
+					생년월일 <input type="date" class="plan-input" name="birth"><br><br>
+					주소 <input type="text" class="plan-input" name="address"><br><br>
+					이메일 <input type="email" class="plan-input" name="email"><br><br>
+					<div class="line"></div>
+					구분 <select id="select-division" name="division">
+						<option value="">선택</option>
 						<option value="0">교원</option>
 						<option value="1">학생</option>
-					</select><br>
+					</select><br><br>
 					<div id="course">
-					과정 <input type="text" class="plan-input" name="course"><br>
+					과정 <input type="text" class="plan-input" name="course"><br><br>
 					</div>
 			</form>
 		</div>
 	</div>
-</div>
+</div> 
 <div class="dim"></div>
-
+<script>
+	$("#course").hide();
+	$("#select-division").change(function() {
+		var selectedDivision = $("#select-division option:selected").val();
+		if( selectedDivision == 0 ) {
+			$("#course").hide();
+		}
+		else if( selectedDivision == 1 ){
+			$("#course").show();
+		}
+		else {
+			$("#course").hide();
+		}
+	});
+	
+</script>
 </body>
 </html>
