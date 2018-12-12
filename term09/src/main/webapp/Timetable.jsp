@@ -20,13 +20,6 @@
 	src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script type="text/javascript" src="js/jquery-ui.min.js"></script>
 <script type="text/javascript" src="js/common.js"></script>
-<script>
-	function select_semester() {
-		var obj = document.getElementById("select_semester");
-		var value = obj.options[obj.selectedIndex].value;
-		alert(value);
-	}
-</script>
 </head>
 <body>
 	<div id="wrap">
