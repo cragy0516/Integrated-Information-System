@@ -5,6 +5,21 @@
 <%@ page import="java.sql.Connection" %>
 <%@ page import="java.sql.PreparedStatement" %>
 <%@ page import="java.sql.ResultSet" %>
+<%
+	Object s_name = session.getAttribute("sessionID");
+	Object s_perm = session.getAttribute("sessionPERM");
+	String name = "DEFAULT_NAME";
+	String perm = "DEFAULT_PERMISSION";
+	String perm_tmp = "";
+
+	if (s_name != null && s_perm != null) {
+		name = s_name.toString();
+		perm_tmp = (String) s_perm;
+		if (perm_tmp.equals("faculty")) perm = "교원";
+		else if (perm_tmp.equals("student")) perm = "학생";
+		else if (perm_tmp.equals("admin")) perm = "관리자";
+	}
+%>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="ko">
 <head>
@@ -40,9 +55,9 @@
 	                	Database dbCon = new Database();
 	            		Connection conn = dbCon.GetConnection();
 	            		try {
-	                		String sql = "select * from subject where lectureNumber = (select lectureNumber from course where studentID=?)";
+	                		String sql = "select * from subject where lectureNumber = any(select lectureNumber from course where studentID=?)";
 	            			PreparedStatement ps = conn.prepareStatement(sql);
-	            			ps.setString(1,"test");
+	            			ps.setString(1,name);
 	            			ResultSet rs = ps.executeQuery();
 	            			int i=1;
 	            			
@@ -72,5 +87,6 @@
 	</div>
 </div>
 <div class="dim"></div>
+
 </body>
 </html>
