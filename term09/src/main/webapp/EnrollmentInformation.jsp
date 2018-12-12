@@ -32,7 +32,7 @@
 		ResultSet rs = ps.executeQuery();
 		
 		if (rs.next()) {
-			dept = rs.getString("dept");
+			dept = rs.getString("department");
 			degree = rs.getString("degree");
 		}
 		

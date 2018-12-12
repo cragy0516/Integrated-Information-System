@@ -54,12 +54,14 @@ public class AuthFilter implements Filter {
 			"AllGradeDetails.jsp",
 			"ScholarshipList.jsp",
 			"planDetails.jsp",
-			"addCourse.jsp"
+			"addCourse.jsp",
+			"editPersonalInfoAction"
 		};
 		final String[] FACULTY_MENU_LIST = {
 			"EnrollmentInformationFaculty.jsp",
 			"PersonalInformaionFaculty.jsp",
-			"ResponsibilitySubject.jsp"
+			"ResponsibilitySubject.jsp",
+			"editPersonalInfoAction"
 		};
 		final String[] ADMIN_MENU_LIST = {
 			"giveNumber.jsp",
