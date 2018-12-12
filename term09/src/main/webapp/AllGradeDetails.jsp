@@ -40,7 +40,10 @@
 							<th>성적</th>
 						</tr>
 					</thead>
-
+					<%
+						double total_grade = 0;
+						int total_sub = 0;
+					%>
 					<tbody>
 						<%
 							Object s_name = session.getAttribute("sessionID");
@@ -53,6 +56,8 @@
 								ResultSet rs = ps.executeQuery();
 
 								int i = 0;
+								ArrayList<Integer> All_Grade = new ArrayList<Integer>();
+
 								while (rs.next()) {
 									String stu_ID = rs.getString("studentID"); // 학생번호
 									String lecture_Num = rs.getString("lectureNumber"); // 과목번호
@@ -67,18 +72,53 @@
 									String lecture_Name = subject_rs.getString("name");
 									String lecture_semester = subject_rs.getString("lectureSemester"); // 학기
 									int lecture_CreditHour = subject_rs.getInt("creditHour");
+
+									out.print("<tr>");
+									out.print("<td>" + ++i + "</td>");
+									out.print("<td>" + lecture_semester + "</td>");
+									out.print("<td>" + lecture_Num + "</td>");
+									out.print("<td>" + lecture_Name + "</td>");
+									out.print("<td>" + lecture_CreditHour + "</td>");
+									out.print("<td>" + lecture_Grade + "</td>");
+									out.print("</tr>");
+
+									double grade = 0;
+									if (lecture_Grade != null) {
+										if (lecture_Grade.equals("A+")) {
+											grade = 4.5;
+										} else if (lecture_Grade.equals("A0")) {
+											grade = 4.0;
+										} else if (lecture_Grade.equals("B+")) {
+											grade = 3.5;
+										} else if (lecture_Grade.equals("B0")) {
+											grade = 3.0;
+										} else if (lecture_Grade.equals("C+")) {
+											grade = 2.5;
+										} else if (lecture_Grade.equals("C0")) {
+											grade = 2.0;
+										} else if (lecture_Grade.equals("D+")) {
+											grade = 1.5;
+										} else if (lecture_Grade.equals("D0")) {
+											grade = 1.0;
+										} else {
+											grade = 0.0;
+										}
+										total_sub += 3;
+									}
+									total_grade += grade * 3;
+								}
 						%>
 						<tr>
-							<td><%=++i%></td>
-							<td><%=lecture_semester%></td>
-							<td><%=lecture_Num%></td>
-							<td><%=lecture_Name%></td>
-							<td><%=lecture_CreditHour%></td>
-							<td><%=lecture_Grade%></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td>총 평점</td>
+							<%
+								System.out.println("tttt: " + total_sub);
+							%>
+							<td><%=total_grade / total_sub%></td>
 						</tr>
-						<%
-							}
-						%>
 					</tbody>
 				</table>
 			</div>
