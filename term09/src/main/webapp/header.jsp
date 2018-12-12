@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <% request.setCharacterEncoding("UTF-8"); %>
 <%
-	Object s_name = session.getAttribute("sessionID");
+	Object s_name = session.getAttribute("sessionNAME");
 	Object s_perm = session.getAttribute("sessionPERM");
 	String name = "DEFAULT_NAME";
 	String perm = "DEFAULT_PERMISSION";

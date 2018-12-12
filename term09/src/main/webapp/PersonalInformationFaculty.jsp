@@ -53,7 +53,7 @@
 %>
 <div id="wrap">
 	<jsp:include page="header.jsp"></jsp:include>
-	<jsp:include page="asideStudent.jsp"></jsp:include>
+	<jsp:include page="asideFaculty.jsp"></jsp:include>
 	<div id="container">
 		<div id="contents">
 			<h2 class="page-title">기본 정보 관리</h2>
