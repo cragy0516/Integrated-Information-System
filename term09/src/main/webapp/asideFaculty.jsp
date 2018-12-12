@@ -25,6 +25,8 @@
 					<li><a href="ResponsibilitySubject.jsp">담당 과목</a></li>
 				</ul>
 			</li>
+			<li id="logoutLi"><a href="logout.jsp">로그아웃</a></li>
 		</ul>
 	</div>
+	
 </body>
