@@ -45,12 +45,13 @@
 				
 				if (result) {
 					// login as user
-					location = "PersonalInformation.jsp";
 					session.setAttribute("sessionID", id);
 					if (rs.getString("permission").equals("0")) {
 						session.setAttribute("sessionPERM", "faculty");
+						location = "EnrollmentInformationFaculty.jsp";
 					} else {
 						session.setAttribute("sessionPERM", "student");
+						location = "EnrollmentInformation.jsp";
 					}
 					session.setAttribute("sessionNAME", rs.getString("name"));
 					

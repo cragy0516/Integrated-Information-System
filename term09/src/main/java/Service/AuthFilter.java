@@ -39,6 +39,9 @@ public class AuthFilter implements Filter {
 		
 		final String LOGIN_PAGE = "login.jsp";
 		final String LOGIN_ACTION_PAGE = "loginAction.jsp";
+		final String STUDENT_BASE_PAGE = "EnrollmentInformation.jsp";
+		final String FACULTY_BASE_PAGE = "EnrollmentInformationFaculty.jsp";
+		final String ADMIN_BASE_PAGE = "EnrollmentInformation.jsp"; // todo
 		final String[] STUDENT_MENU_LIST = {
 			"EnrollmentInformation.jsp",
 			"PersonalInformation.jsp",
@@ -66,25 +69,30 @@ public class AuthFilter implements Filter {
 			uri.indexOf(LOGIN_ACTION_PAGE) < 0) {
 			if (session == null) {
 				httpResponse.sendRedirect(LOGIN_PAGE);
-			}
-			String id = (String) session.getAttribute("sessionID");
-			String perm = (String) session.getAttribute("sessionPERM");
-			
-			if (id == null || perm == null) {
-				httpResponse.sendRedirect(LOGIN_PAGE);
-			}
-			
-			if (perm.equals("admin")) {
+			} else {
+				String id = (String) session.getAttribute("sessionID");
+				String perm = (String) session.getAttribute("sessionPERM");
 				
-			} else if (perm.equals("faculty")) {
-				for (int i=0; i<FACULTY_MENU_LIST.length; i++) {
-					if (uri.indexOf(FACULTY_MENU_LIST[i]) < 0) {
+				if (id == null || perm == null) {
+					httpResponse.sendRedirect(LOGIN_PAGE);
+				} else {
+					int i = 0;
+					if (perm.equals("admin")) {
 						
+					} else if (perm.equals("faculty")) {
+						for (i=0; i<FACULTY_MENU_LIST.length; i++) {
+							if (uri.indexOf(FACULTY_MENU_LIST[i]) > 0) break;
+						}
+						if (i == FACULTY_MENU_LIST.length) httpResponse.sendRedirect(FACULTY_BASE_PAGE);
+					} else if (perm.equals("student")) {
+						for (i=0; i<STUDENT_MENU_LIST.length; i++) {
+							if (uri.indexOf(STUDENT_MENU_LIST[i]) > 0) break;
+						}
+						if (i == STUDENT_MENU_LIST.length) httpResponse.sendRedirect(STUDENT_BASE_PAGE);
 					}
-				}
-			} else if (perm.equals("student")) {
-				
+				}	
 			}
+			
 		}
 		
 		chain.doFilter(request, response);
