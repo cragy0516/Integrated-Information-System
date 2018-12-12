@@ -9,9 +9,10 @@
 
 	if (s_name != null && s_perm != null) {
 		name = s_name.toString();
-		perm_tmp = s_perm.toString();
-		if (perm_tmp == "admin") perm = "관리자";
-		else if (perm_tmp == "user") perm = "학생";
+		perm_tmp = (String) s_perm;
+		if (perm_tmp.equals("faculty")) perm = "교원";
+		else if (perm_tmp.equals("student")) perm = "학생";
+		else if (perm_tmp.equals("admin")) perm = "관리자";
 	}
 %>
 <!DOCTYPE html>

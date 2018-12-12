@@ -31,6 +31,8 @@
 				location = "PersonalInformation.jsp";
 				session.setAttribute("sessionID", id);
 				session.setAttribute("sessionPERM", "admin");
+				session.setAttribute("sessionNAME", rs.getString("name"));
+				
 				response.getWriter().print("<script> window.location.href='" + location +"' </script>");
 			} else {
 				// check id and password for user
@@ -45,7 +47,13 @@
 					// login as user
 					location = "PersonalInformation.jsp";
 					session.setAttribute("sessionID", id);
-					session.setAttribute("sessionPERM", "user");
+					if (rs.getString("permission").equals("0")) {
+						session.setAttribute("sessionPERM", "faculty");
+					} else {
+						session.setAttribute("sessionPERM", "student");
+					}
+					session.setAttribute("sessionNAME", rs.getString("name"));
+					
 					response.getWriter().print("<script> window.location.href='" + location +"' </script>");
 				} else {
 					// failed to find any identities for both admin and user
