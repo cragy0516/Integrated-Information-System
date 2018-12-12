@@ -1,7 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <% request.setCharacterEncoding("UTF-8"); %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko">
+<%@ page import="Dao.Database" %>
+<%@ page import="java.sql.Connection" %>
+<%@ page import="java.sql.PreparedStatement" %>
+<%@ page import="java.sql.ResultSet" %>
+<!DOCTYPE html>
+<html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -37,38 +41,45 @@
             <li>
 				<a href="#" class="nav-ico3 depth">과목 정보</a>
 				<ul>
-					<li><a href="#">담당 과목</a></li>
+					<li><a href="ResponsibilitySubject.jsp">담당 과목</a></li>
 				</ul>
 			</li>
 		</ul>
 	</div>
 	<div id="container">
 		<div id="contents">
-			<h2 class="page-title">담당 과목 내역</h2>
-            <table id="grade-table">
-                <thead>
-                    <tr>
-                        <th>No</th>
-                        <th>학수번호</th>
-                        <th>과목명</th>
-                        <th>학생관리</th>
-                        <th>강의계획서관리</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>1234500</td>
-                        <td>자료구조및설계</td>
-                        <td><a href="ClassStudent.jsp">관리</a></td>
-                        <td><a href="LecturePlan.jsp">관리</a></td>
-                    </tr>
-                
-                </tbody>
+			<h2 class="page-title">강의계획서 수정</h2>
+			<form action="addLecturePlan.jsp" method="post">
+            <table>
+            	<tr>
+            		<td style="width: 100px">수업개요</td>
+            		<td>
+						<input type="text" id="outline" name="outline" style="width: 100%">
+					</td>
+            	</tr>
+            	<tr>
+            	<td>선수과목</td>
+            	<td><input type="text" id="presubject" name="presubject" style="width: 100%"></td>
+            	</tr>
+            	<tr>
+            	<td>성적비율</td>
+            	<td><input type="text" id="ratio" name="ratio" style="width: 100%"></td>
+            	</tr>
+            	<tr>
+            	<td>상세사항</td>
+            	<td><input type="text" id="content" name="content" style="width: 100%"></td>
+            	</tr>
             </table>
+            <input type="submit" class="search-btn" value="저장">
+            </form>
 		</div>
 	</div>
 </div>
 <div class="dim"></div>
+<div id-"grademodify" class="modal">
+	<div class="grademodify-content">
+		<span class="close">&times;</span>
+		<p></p>
+	</div>
 </body>
 </html>
