@@ -30,8 +30,9 @@
 				<strong><%=name%></strong>
 				<span><%=perm%></span>
 			</span>
-			<img src="img/good.png" class="thumb" alt="" />
+			<img src="img/good.png" onclick="myFunction()" class="thumb" alt="" />
 		</a>
-	</div>
 </div>
+	</div>
 </body>
+</html>
