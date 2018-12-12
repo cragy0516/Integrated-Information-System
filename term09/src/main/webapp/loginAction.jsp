@@ -30,6 +30,7 @@
 				// login as admin
 				location = "PersonalInformation.jsp";
 				session.setAttribute("sessionID", id);
+				session.setAttribute("sessionPERM", "admin");
 				response.getWriter().print("<script> window.location.href='" + location +"' </script>");
 			} else {
 				// check id and password for user
@@ -44,6 +45,7 @@
 					// login as user
 					location = "PersonalInformation.jsp";
 					session.setAttribute("sessionID", id);
+					session.setAttribute("sessionPERM", "user");
 					response.getWriter().print("<script> window.location.href='" + location +"' </script>");
 				} else {
 					// failed to find any identities for both admin and user

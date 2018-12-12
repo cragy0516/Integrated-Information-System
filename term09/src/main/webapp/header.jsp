@@ -1,5 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <% request.setCharacterEncoding("UTF-8"); %>
+<%
+	Object s_name = session.getAttribute("sessionID");
+	Object s_perm = session.getAttribute("sessionPERM");
+	String name = "DEFAULT_NAME";
+	String perm = "DEFAULT_PERMISSION";
+	String perm_tmp = "";
+
+	if (s_name != null && s_perm != null) {
+		name = s_name.toString();
+		perm_tmp = s_perm.toString();
+		if (perm_tmp == "admin") perm = "관리자";
+		else if (perm_tmp == "user") perm = "학생";
+	} else {
+		// login required
+	}
+%>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="ko">
 <head>
@@ -13,8 +29,8 @@
 	<div class="inner">
 		<a href="#" class="user-select">
 			<span class="name">
-				<strong>이미진</strong>
-				<span>학생</span>
+				<strong><%=name%></strong>
+				<span><%=perm%></span>
 			</span>
 			<img src="img/good.png" class="thumb" alt="" />
 		</a>
