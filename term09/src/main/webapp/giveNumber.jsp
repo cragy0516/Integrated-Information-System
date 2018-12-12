@@ -39,7 +39,7 @@
 		<div id="contents">
 			<h2 class="page-title">학번 부여</h2>
 				<br>
-				<form action="giveNumber.jsp" id="giveNumberForm" method="get">
+				<form action="giveNumber.jsp" id="giveNumberForm" method="post">
 					이름 <input type="text" class="plan-input" name="name"><br><br>
 					아이디(학번) <input type="text" class="plan-input" name="name"><br><br>
 					패스워드 <input type="password" class="plan-input" name="password"><br><br>
