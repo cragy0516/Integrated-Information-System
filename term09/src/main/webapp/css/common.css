@@ -692,6 +692,18 @@ fieldset > * {float:left; margin-right:20px;}
     border: 1px solid #333333;
 }
 
+#time-table {
+	text-align:center;
+    border-collapse: collapse;
+    width: 100%;
+    border: 1px solid #333333;
+}
+#time-table > td,td,th {
+    padding: 10px;
+    border: 1px solid #333333;
+    width: 100px;
+}
+
 #logout-btn {
 	float:right;
 }

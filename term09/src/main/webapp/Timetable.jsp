@@ -16,6 +16,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <title>시간표</title>
 <link rel="stylesheet" type="text/css" href="css/common.css" />
+<link rel="stylesheet" type="text/css" href="css/timetable.css" />
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script type="text/javascript" src="js/jquery-ui.min.js"></script>
@@ -28,7 +29,7 @@
 		<div id="container">
 			<div id="contents">
 				<h2 class="page-title">시간표</h2>
-				<table id="grade-table">
+				<table id="time-table">
 					<thead>
 						<tr>
 							<th></th>
@@ -55,7 +56,7 @@
 								int start_time = 9;
 								int end_time = 10;
 
-								String timeTable[][] = new String[11][5]; // 시간표를 담는 배열
+								String timeTable[][] = new String[15][5]; // 시간표를 담는 배열
 								String day_per_sub[] = null;
 								String lecture_name = null;
 
@@ -94,7 +95,7 @@
 									}
 								}
 
-								for (int a = 0; a < 11; a++) {
+								for (int a = 0; a < 15; a++) {
 									out.print("<tr>");
 									out.print(
 											"<td>" + String.valueOf(start_time) + ":00~" + String.valueOf(end_time) + ":00" + "</td>");
