@@ -13,16 +13,30 @@
 	Connection conn = dbCon.GetConnection();
 	boolean result = false;
 	try {
-		String sql = "update scholarship set studentID=?, scholarship = ?, ratio = ?, content = ?";
-		PreparedStatement ps = conn.prepareStatement(sql);
-		ps.setString(1,studentID);
-		ps.setString(2,scholarshipName);
-		ps.setString(3,semester);
-		ps.setString(4,amount);
-		ps.executeUpdate();
-		ps.close();
-		conn.close();
-		result = true;
+		String sqlq = "select exists ( select * from studentInfo where id = ?) as ex;";
+		PreparedStatement pss = conn.prepareStatement(sqlq);
+		pss.setString(1, studentID);
+		ResultSet rs = pss.executeQuery();
+		rs.next();
+		String exsist = rs.getString("ex");
+		
+		
+		if(exsist.equals("1")){
+			String sql = "insert into scholarship values(?,?,?,?);";
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setString(1,studentID);
+			ps.setString(2,scholarshipName);
+			ps.setString(3,semester);
+			ps.setString(4,amount);
+			ps.executeUpdate();
+			ps.close();
+			conn.close();
+			pss.close();
+			result = true;
+		}
+		else{
+			result = false;
+		}
 	}
 	catch(Exception e ) {
 		System.out.print(e.getMessage());
@@ -35,10 +49,12 @@
 	<body>
 	<%
 	if( result == true ) { %>
-		<script> alert("성공적으로 저장되었습니다."); history.go(-2);</script>
+		<script> alert("성공적으로 저장되었습니다."); 
+		location.href = "Scholarship.jsp";
+		</script>
 	<%
 	} else { %>
-	<script>alert("저장에 실패했습니다."); history.go(-2);</script>
+	<script>alert("저장에 실패했습니다."); history.go(-1);</script>
 	<% } %>
 	</body>
 </html>	

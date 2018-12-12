@@ -63,7 +63,8 @@ public class AuthFilter implements Filter {
 		};
 		final String[] ADMIN_MENU_LIST = {
 			"giveNumber.jsp",
-			"asideAdmin.jsp"
+			"asideAdmin.jsp",
+			"Scholarship.jsp"
 		};
 		
 		HttpServletRequest httpRequest = (HttpServletRequest) request;
