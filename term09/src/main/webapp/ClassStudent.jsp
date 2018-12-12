@@ -35,21 +35,21 @@
 			<li>
 				<a href="#" class="nav-ico2 depth">학사 행정</a>
 				<ul>
-					<li><a href="#">학적 정보</a></li>
-					<li><a href="#">신상 정보/개인 설정</a></li>
+					<li><a href="EnrollmentInformation.jsp">학적 정보</a></li>
+					<li><a href="PersonalInformaion.jsp">신상 정보/개인 설정</a></li>
 				</ul>
 			</li>
             <li>
 				<a href="#" class="nav-ico3 depth">과목 정보</a>
 				<ul>
-					<li><a href="#">담당 과목</a></li>
+					<li><a href="ResponsibilitySubject.jsp">담당 과목</a></li>
 				</ul>
 			</li>
 		</ul>
 	</div>
 	<div id="container">
 		<div id="contents">
-			<h2 class="page-title">담당 과목 내역</h2>
+			<h2 class="page-title">수강 학생 정보</h2>
             <table id="grade-table">
                 <thead>
                     <tr>
