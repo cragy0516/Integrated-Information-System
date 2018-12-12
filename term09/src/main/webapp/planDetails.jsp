@@ -7,6 +7,7 @@
 <%@ page import="java.sql.ResultSet" %>
 <%
 	String lecture = request.getParameter("lecture");
+	String lectureName = "";
 	String outline = "";
 	String presubject = "";
 	String ratio = "";
@@ -15,11 +16,13 @@
 		Database dbCon = new Database();
 		Connection conn = dbCon.GetConnection();
 		try {
-    		String sql = "select outline,presubject,ratio,content from lecturePlan where lectureNumber=?";
+    		String sql = "select (select name from subject where lectureNumber=?) as subjectName, outline,presubject,ratio,content from lecturePlan where lectureNumber=?";
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setString(1,lecture);
+			ps.setString(2,lecture);
 			ResultSet rs = ps.executeQuery();
 			while(rs.next()) {
+				lectureName = rs.getString("subjectName");
 				outline = rs.getString("outline");
 				presubject = rs.getString("presubject");
 				ratio = rs.getString("ratio");
@@ -54,9 +57,13 @@
 			<h2 class="page-title">강의 계획서</h2>
 			<br>
 			<h3>과목명</h3>
+			<input type="text" class="plan-input" value="<%=lectureName%>" readonly><br><br>
+			<h3>학수번호</h3>
 			<input type="text" class="plan-input" value="<%=lecture%>" readonly><br><br>
 			<h3>수업개요</h3>
 			<input type="text" class="plan-input" value="<%=outline%>" readonly><br><br>
+			<h3>선수과목</h3>
+			<input type="text" class="plan-input" value="<%=presubject%>" readonly><br><br>
 			<h3>성적비율</h3>
 			<input type="text" class="plan-input" value="<%=ratio%>" readonly><br><br>
 			<h3>상세사항</h3>
