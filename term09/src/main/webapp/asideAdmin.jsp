@@ -16,7 +16,7 @@
 				<a href="#" class="nav-ico2 depth">학사 행정</a>
 				<ul>
 					<li><a href="giveNumber.jsp">학번 부여</a></li>
-					<li><a href="">학적 변경</a></li>
+					<li><a href="editEnrollmentInformationList">학적 변경</a></li>
 				</ul>
 			</li>
 			<li>

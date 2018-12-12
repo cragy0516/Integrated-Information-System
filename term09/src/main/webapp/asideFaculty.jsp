@@ -5,7 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<title></title>
+<title></title>  
 <link rel="stylesheet" type="text/css" href="css/common.css" />
 </head>
 <body>
@@ -16,7 +16,8 @@
 				<a href="#" class="nav-ico2 depth">학사 행정</a>
 				<ul>
 					<li><a href="EnrollmentInformationFaculty.jsp">학적 정보</a></li>
-					<li><a href="PersonalInformationFaculty.jsp">신상 정보/개인 설정</a></li>
+					<li><a href="PersonalInformaionFaculty.jsp">신상 정보</a></li>
+					<li><a href="UpdatePasswordFaculty.jsp">비밀번호 변경</a></li>
 				</ul>
 			</li>
             <li>
