@@ -37,8 +37,24 @@ public class AuthFilter implements Filter {
 
 		// pass the request along the filter chain
 		
-		String LOGIN_PAGE = "login.jsp";
-		String LOGIN_ACTION_PAGE = "loginAction.jsp";
+		final String LOGIN_PAGE = "login.jsp";
+		final String LOGIN_ACTION_PAGE = "loginAction.jsp";
+		final String[] STUDENT_MENU_LIST = {
+			"EnrollmentInformation.jsp",
+			"PersonalInformation.jsp",
+			"CourseReference.jsp",
+			"CourseDetails.jsp",
+			"CourseApply.jsp",
+			"Timetable.jsp",
+			"GradeDetails.jsp",
+			"AllGradeDetails.jsp",
+			"ScholarshipList.jsp"
+		};
+		final String[] FACULTY_MENU_LIST = {
+			"EnrollmentInformationFaculty.jsp",
+			"PersonalInformaionFaculty.jsp",
+			"ResponsibilitySubject.jsp"
+		};
 		
 		HttpServletRequest httpRequest = (HttpServletRequest) request;
 		HttpServletResponse httpResponse = (HttpServletResponse) response;
@@ -52,9 +68,22 @@ public class AuthFilter implements Filter {
 				httpResponse.sendRedirect(LOGIN_PAGE);
 			}
 			String id = (String) session.getAttribute("sessionID");
+			String perm = (String) session.getAttribute("sessionPERM");
 			
-			if (id == null) {
+			if (id == null || perm == null) {
 				httpResponse.sendRedirect(LOGIN_PAGE);
+			}
+			
+			if (perm.equals("admin")) {
+				
+			} else if (perm.equals("faculty")) {
+				for (int i=0; i<FACULTY_MENU_LIST.length; i++) {
+					if (uri.indexOf(FACULTY_MENU_LIST[i]) < 0) {
+						
+					}
+				}
+			} else if (perm.equals("student")) {
+				
 			}
 		}
 		
