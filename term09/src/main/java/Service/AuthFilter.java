@@ -63,7 +63,8 @@ public class AuthFilter implements Filter {
 		};
 		final String[] ADMIN_MENU_LIST = {
 			"giveNumber.jsp",
-			"asideAdmin.jsp"
+			"asideAdmin.jsp",
+			"addUser.jsp"
 		};
 		
 		HttpServletRequest httpRequest = (HttpServletRequest) request;
@@ -71,7 +72,7 @@ public class AuthFilter implements Filter {
 		HttpSession session = httpRequest.getSession();
 		
 		String uri = httpRequest.getRequestURI();
-		
+		 
 		if (uri.indexOf(LOGIN_PAGE) < 0 &&
 			uri.indexOf(LOGIN_ACTION_PAGE) < 0 &&
 			uri.indexOf(LOGOUT_PAGE) < 0) {
