@@ -60,7 +60,7 @@
 			</form>
 		</div>
 	</div>
-</div>
+</div> 
 <div class="dim"></div>
 <script>
 	$("#course").hide();
