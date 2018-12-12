@@ -17,22 +17,20 @@
 	boolean result = false;
 	String originDB = us.checkOrigin(userID);
 	if( originDB == originPassword ) {
-	try {
-		
-		String sql = "update user set password=? where id=? and password=?";
-		PreparedStatement ps = conn.prepareStatement(sql);
-		ps.setString(1,newPassword);
-		ps.setString(2,userID);
-		ps.setString(3,originPassword); 
-		ps.executeUpdate(); 
-		 
-		ps.close();
-		conn.close();
-		result = true;
-	} catch(Exception e ) {
-		System.out.print(e.getMessage());
-		result = false;
-	}
+		try {
+			String sql = "update user set password=? where id=?";
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setString(1,newPassword);
+			ps.setString(2,userID);
+			ps.executeUpdate(); 
+			 
+			ps.close();
+			conn.close();
+			result = true;
+		} catch(Exception e ) {
+			System.out.print(e.getMessage());
+			result = false;
+		}
 	}
 	else {
 		result = false;
