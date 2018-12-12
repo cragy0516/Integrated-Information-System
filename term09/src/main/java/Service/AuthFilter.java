@@ -74,7 +74,7 @@ public class AuthFilter implements Filter {
 			"Scholarship.jsp",
 			"editEnrollmentInformationList.jsp",
 			"editEnrollmentInformationDetail.jsp",
-			"editEnrollmentInfoAction.jsp"
+			"editEnrollmentInformationAction.jsp"
 		};
 		
 		HttpServletRequest httpRequest = (HttpServletRequest) request;

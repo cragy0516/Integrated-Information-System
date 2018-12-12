@@ -5,8 +5,6 @@
 <%@ page import="java.sql.Connection" %>
 <%@ page import="java.sql.PreparedStatement" %>
 <%@ page import="java.sql.ResultSet" %>
-<%	String id = request.getParameter("id");
-%>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="ko">
 <head>
@@ -20,22 +18,25 @@
 </head>
 <body>
 <%
+	String id = request.getParameter("id");
 	Database dbCon = new Database();
 	Connection conn = dbCon.GetConnection();
 	String name = "";
 	String sex = "";
-	String phone = "";
+	String phone = ""; 
 	String birth = "";
 	String address = "";
 	String email = "";
 	String perm = "";
 	String dept = "";
 	String degree = "";
+	String permission = "";
 	
 	try {
 		// check id and password for admin
 		
 		String sql = "select * from user where id='" + id + "'";
+		String sql2 = "";
 		PreparedStatement ps = conn.prepareStatement(sql);
 		PreparedStatement ps2 = null;
 		ResultSet rs = ps.executeQuery();
@@ -50,18 +51,18 @@
 			email = rs.getString("email");
 			perm = rs.getString("permission");
 			if (perm.equals("0")) {
-				// 교원
-				sql = "select * from facultyInfo where id='" + id + "'";
-				ps2 = conn.prepareStatement(sql);
-				rs2 = ps.executeQuery();
+				permission = "교원";
+				sql2 = "select * from facultyInfo where id='" + id + "'";
+				ps2 = conn.prepareStatement(sql2);
+				rs2 = ps2.executeQuery();
 				if (rs2.next()) {
 					dept = rs2.getString("department");
 				}
 			} else {
-				// 학생
-				sql = "select * from studentInfo where id='" + id + "'";
-				ps2 = conn.prepareStatement(sql);
-				rs2 = ps.executeQuery();
+				permission = "학생";
+				sql2 = "select * from studentInfo where id='" + id + "'";
+				ps2 = conn.prepareStatement(sql2);
+				rs2 = ps2.executeQuery();
 				if (rs2.next()) {
 					dept = rs2.getString("department");
 					degree = rs2.getString("degree");
@@ -84,7 +85,20 @@
 	<div id="container">
 		<div id="contents">
 			<h2 class="page-title">학적 정보 수정</h2>
-			<form name="personalForm" method="post" action="editEnrollmentInformationAction.jsp">
+			<form name="personalForm" method="get" action="editEnrollmentInformationAction.jsp">
+				<div class="ipt mt0">
+					<h3>구분</h3>
+					<span class="box">
+						<input type="text" id="ipt-permission" class="ipt-txt" value="<%=permission%>" disabled />
+						<input type="hidden" value="<%=permission%>" name="permission" />
+					</span>
+				</div>
+				<div class="ipt mt0">
+					<h3>학번/교번</h3>
+					<span class="box">
+						<input type="text" id="ipt-id" class="ipt-txt" value="<%=id%>" name="id" disabled />
+					</span>
+				</div>
 				<div class="ipt mt0">
 					<h3>이름</h3>
 					<span class="box">
@@ -130,7 +144,7 @@
 					<button class="btn-cancel">취소</button>
 				</div>
 				<%
-				if (perm.equals("student")) {
+				if (permission.equals("학생")) {
 					%>
 					<div class="ipt">
 					<h3>학사과정</h3>
