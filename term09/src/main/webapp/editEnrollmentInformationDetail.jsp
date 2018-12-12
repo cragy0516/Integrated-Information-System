@@ -96,7 +96,8 @@
 				<div class="ipt mt0">
 					<h3>학번/교번</h3>
 					<span class="box">
-						<input type="text" id="ipt-id" class="ipt-txt" value="<%=id%>" name="id" disabled />
+						<input type="text" id="ipt-id" class="ipt-txt" value="<%=id%>" disabled />
+						<input type="hidden" value="<%=id%>" name="id" />
 					</span>
 				</div>
 				<div class="ipt mt0">

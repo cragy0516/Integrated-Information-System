@@ -10,6 +10,8 @@
 	String department = request.getParameter("department");
 	String degree = request.getParameter("degree");
 	String permission = request.getParameter("permission");
+	System.out.println(department);
+	System.out.println(degree);
 	
 	Database dbCon = new Database();
 	Connection conn = dbCon.GetConnection();
@@ -18,7 +20,6 @@
 	
 	try {
 		String sql = "";
-		System.out.println(permission);
 		if (permission.equals("학생")) {
 			sql = "update studentInfo set department=?, degree=? where id='" + id + "'";
 			PreparedStatement ps = conn.prepareStatement(sql);
