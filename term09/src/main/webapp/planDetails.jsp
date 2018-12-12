@@ -54,7 +54,7 @@
 			<h2 class="page-title">강의 계획서</h2>
 			<br>
 			<h3>과목명</h3>
-			<input type="text" class="plan-input" value="<%=lecture%>" readonly><br ><br>
+			<input type="text" class="plan-input" value="<%=lecture%>" readonly><br><br>
 			<h3>수업개요</h3>
 			<input type="text" class="plan-input" value="<%=outline%>" readonly><br><br>
 			<h3>성적비율</h3>
