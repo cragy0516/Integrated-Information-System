@@ -16,7 +16,7 @@
 				<a href="#" class="nav-ico2 depth">학사 행정</a>
 				<ul>
 					<li><a href="EnrollmentInformationFaculty.jsp">학적 정보</a></li>
-					<li><a href="PersonalInformaionFaculty.jsp">신상 정보</a></li>
+					<li><a href="PersonalInformationFaculty.jsp">신상 정보</a></li>
 					<li><a href="UpdatePasswordFaculty.jsp">비밀번호 변경</a></li>
 				</ul>
 			</li>
