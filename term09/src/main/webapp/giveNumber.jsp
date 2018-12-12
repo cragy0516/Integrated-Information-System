@@ -19,6 +19,7 @@
 		else if (perm_tmp.equals("student")) perm = "학생";
 		else if (perm_tmp.equals("admin")) perm = "관리자";
 	}
+
 %>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="ko">
@@ -39,9 +40,9 @@
 		<div id="contents">
 			<h2 class="page-title">학번 부여</h2>
 				<br>
-				<form action="giveNumber.jsp" id="giveNumberForm" method="post">
-					이름 <input type="text" class="plan-input" name="name"><br><br>
-					아이디(학번) <input type="text" class="plan-input" name="name"><br><br>
+				<form action="addUser.jsp" id="giveNumberForm" method="post">
+					이름 <input type="text" class="plan-input" name="userName"><br><br>
+					아이디(학번) <input type="text" class="plan-input" name="userID"><br><br>
 					패스워드 <input type="password" class="plan-input" name="password"><br><br>
 					성별 <input type="text" class="plan-input" name="sex"><br><br>
 					연락처 <input type="tel" class="plan-input" name="phone"><br><br>
@@ -49,11 +50,12 @@
 					주소 <input type="text" class="plan-input" name="address"><br><br>
 					이메일 <input type="email" class="plan-input" name="email"><br><br>
 					<div class="line"></div>
-					구분 <select id="select-division" name="division">
+					구분 <select id="select-division" name="permission">
 						<option value="">선택</option>
 						<option value="0">교원</option>
 						<option value="1">학생</option>
 					</select><br><br>
+					소속 <input type="text" class="plan-input" name="department"><br><br>
 					<div id="course">
 					</div>
 					<br><br>
@@ -71,7 +73,7 @@ $("#course").html("");
 			$("#course").html("");
 		} 
 		else if( selectedDivision == 1 ){
-			$("#course").html('과정 <input type="text" class="plan-input" name="course"><br><br>');
+			$("#course").html('과정 <input type="text" class="plan-input" name="degree"><br><br>');
 		}
 		else {
 			$("#course").html("");
