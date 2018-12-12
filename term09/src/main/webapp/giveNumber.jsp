@@ -69,7 +69,7 @@ $("#course").html("");
 		var selectedDivision = $("#select-division option:selected").val();
 		if( selectedDivision == 0 ) {
 			$("#course").html("");
-		}
+		} 
 		else if( selectedDivision == 1 ){
 			$("#course").html('과정 <input type="text" class="plan-input" name="course"><br><br>');
 		}
