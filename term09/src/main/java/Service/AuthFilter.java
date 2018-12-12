@@ -42,9 +42,9 @@ public class AuthFilter implements Filter {
 		final String LOGOUT_PAGE = "logoutAction.jsp";
 		final String STUDENT_BASE_PAGE = "EnrollmentInformation.jsp";
 		final String FACULTY_BASE_PAGE = "EnrollmentInformationFaculty.jsp";
-		final String ADMIN_BASE_PAGE = "giveNumber.jsp";
+		final String ADMIN_BASE_PAGE = "giveNumber.jsp"; 
 		final String[] STUDENT_MENU_LIST = {
-			"EnrollmentInformation.jsp",
+			"EnrollmentInformation.jsp",  
 			"PersonalInformation.jsp",
 			"CourseReference.jsp",
 			"CourseDetails.jsp",
@@ -55,21 +55,22 @@ public class AuthFilter implements Filter {
 			"ScholarshipList.jsp",
 			"planDetails.jsp",
 			"addCourse.jsp",
-			"editPersonalInfoAction"
+			"editPersonalInfoAction",
+			"UpdatePassword.jsp",
+			"editPassword.jsp"
 		};
 		final String[] FACULTY_MENU_LIST = {
 			"EnrollmentInformationFaculty.jsp",
-			"PersonalInformationFaculty.jsp",
+			"PersonalInformaionFaculty.jsp",
 			"ResponsibilitySubject.jsp",
-			"editPersonalInfoAction"
+			"editPersonalInfoAction",
+			"UpdatePasswordFaculty.jsp",
+			"editPassword.jsp"
 		};
 		final String[] ADMIN_MENU_LIST = {
 			"giveNumber.jsp",
 			"asideAdmin.jsp",
-			"addUser.jsp",
-			"editEnrollmentInformationList",
-			"editEnrollmentInformationDetail",
-			"Scholarship.jsp"
+			"addUser.jsp"
 		};
 		
 		HttpServletRequest httpRequest = (HttpServletRequest) request;
