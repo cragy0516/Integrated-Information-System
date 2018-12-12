@@ -15,15 +15,16 @@
 	Database dbCon = new Database();
 	Connection conn = dbCon.GetConnection();
 	
+	String location = "";
+	if (perm.equals("student")) {
+		location = "PersonalInformation.jsp";
+	} else if (perm.equals("faculty")) {
+		location = "PersonalInformationFaculty.jsp";
+	}
+	
 	try {
 		String sql = "update user set address=?, phone=?, email=? where id='" + id + "'";
 		PreparedStatement ps = conn.prepareStatement(sql);
-		String location = "";
-		if (perm.equals("student")) {
-			location = "PersonalInformation.jsp";
-		} else if (perm.equals("faculty")) {
-			location = "PersonalInformationFaculty.jsp";
-		}
 		
 		if (address.equals("") || phone.equals("") || email.equals("")) {
 			response.getWriter().print("<script> alert(\"필수 입력값이 누락되었습니다.\");");
@@ -41,6 +42,8 @@
 		ps.close();
 		conn.close();
 	} catch(Exception e ) {
+		response.getWriter().print("<script> alert(\"갱신 실패\");");
+		response.getWriter().print("window.location.href='" + location + "' </script>");
 		System.out.print(e.getMessage());
 	}
 %>

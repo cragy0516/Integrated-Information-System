@@ -15,6 +15,7 @@
 		String pw = request.getParameter("pw");
 		Database dbCon = new Database();
 		Connection conn = dbCon.GetConnection();
+		String location = "login.jsp";
 		
 		try {
 			// check id and password for admin
@@ -24,7 +25,6 @@
 			ResultSet rs = ps.executeQuery();
 			
 			Boolean result = rs.next();
-			String location = "";
 			
 			if (result) {
 				// login as admin
@@ -70,6 +70,8 @@
 			rs.close();
 			conn.close();
 		} catch(Exception e ) {
+			response.getWriter().print("<script> alert(\"로그인 실패\");");
+			response.getWriter().print("window.location.href='" + location + "' </script>");
 			System.out.print(e.getMessage());
 		}
 	%>

@@ -57,49 +57,50 @@
 	<div id="container">
 		<div id="contents">
 			<h2 class="page-title">기본 정보 관리</h2>
-
-			<div class="ipt mt0">
-				<h3>이름</h3>
-				<span class="box">
-					<input type="text" id="ipt-name" class="ipt-txt" value="<%=name%>" disabled />
-				</span>
-			</div>
-			<div class="ipt mt0">
-				<h3>성별</h3>
-				<span class="box">
-					<input type="text" id="ipt-sex" class="ipt-txt" value="<%=sex%>" disabled />
-				</span>
-			</div>
-			<div class="ipt mt0">
-				<h3>생년월일</h3>
-				<span class="box">
-					<input type="text" id="ipt-birth" class="ipt-txt" value="<%=birth%>" disabled />
-				</span>
-			</div>
-			<div class="ipt">
-				<h3>주소</h3>
-				<span class="box">
-					<input type="text" id="ipt-address" class="ipt-txt" title="주소" value="<%=address%>" />
-					<button class="btn-save">저장</button>
-				</span>
-				<button class="btn-cancel">취소</button>
-			</div>
-			<div class="ipt">
-				<h3>핸드폰 번호</h3>
-				<span class="box">
-					<input type="text" id="ipt-phone" class="ipt-txt" title="핸드폰 번호" value="<%=phone%>" />
-					<button class="btn-save">저장</button>
-				</span>
-				<button class="btn-cancel">취소</button>
-			</div>
-			<div class="ipt">
-				<h3>이메일</h3>
-				<span class="box">
-					<input type="text" id="ipt-email" class="ipt-txt" title="이메일" value="<%=email%>" />
-					<button class="btn-save">저장</button>
-				</span>
-				<button class="btn-cancel">취소</button>
-			</div>
+			<form name="personalForm" method="post" action="editPersonalInfoAction.jsp">
+				<div class="ipt mt0">
+					<h3>이름</h3>
+					<span class="box">
+						<input type="text" id="ipt-name" class="ipt-txt" value="<%=name%>" disabled />
+					</span>
+				</div>
+				<div class="ipt mt0">
+					<h3>성별</h3>
+					<span class="box">
+						<input type="text" id="ipt-sex" class="ipt-txt" value="<%=sex%>" disabled />
+					</span>
+				</div>
+				<div class="ipt mt0">
+					<h3>생년월일</h3>
+					<span class="box">
+						<input type="text" id="ipt-birth" class="ipt-txt" value="<%=birth%>" disabled />
+					</span>
+				</div>
+				<div class="ipt">
+					<h3>주소</h3>
+					<span class="box">
+						<input type="text" id="ipt-address" class="ipt-txt" title="주소" value="<%=address%>" name="address" />
+						<input type="submit" class="btn-save" value="저장" />
+					</span>
+					<button class="btn-cancel">취소</button>
+				</div>
+				<div class="ipt">
+					<h3>핸드폰 번호</h3>
+					<span class="box">
+						<input type="text" id="ipt-phone" class="ipt-txt" title="핸드폰 번호" value="<%=phone%>" name="phone" />
+						<input type="submit" class="btn-save" value="저장" />
+					</span>
+					<button class="btn-cancel">취소</button>
+				</div>
+				<div class="ipt">
+					<h3>이메일</h3>
+					<span class="box">
+						<input type="text" id="ipt-email" class="ipt-txt" title="이메일" value="<%=email%>" name="email" />
+						<input type="submit" class="btn-save" value="저장" />
+					</span>
+					<button class="btn-cancel">취소</button>
+				</div>
+			</form>
 		</div>
 	</div>
 </div>
