@@ -50,7 +50,7 @@
 					주소 <input type="text" class="plan-input" name="address"><br><br>
 					이메일 <input type="email" class="plan-input" name="email"><br><br>
 					<div class="line"></div>
-					구분 <select id="select-division" name="permission">
+					구분 <select id="select-division" name="permission"> 
 						<option value="">선택</option>
 						<option value="0">교원</option>
 						<option value="1">학생</option>

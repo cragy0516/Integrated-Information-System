@@ -6,7 +6,7 @@
 <%@ page import="java.sql.PreparedStatement" %>
 <%@ page import="java.sql.ResultSet" %>
 <%
-	adminService as = new adminService();
+	adminService as = new adminService(); 
 	String userName = request.getParameter("userName");
 	String userID = request.getParameter("userID");
 	String password = request.getParameter("password");

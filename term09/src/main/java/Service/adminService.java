@@ -26,7 +26,7 @@ public class adminService {
 	}
 	public void addFacultyInfo(String id, String department) throws Exception {
 		Database dbCon = new Database();
-		Connection conn = dbCon.GetConnection();
+		Connection conn = dbCon.GetConnection(); 
 		try {
 			String joinQuery = "insert into facultyInfo (id,department) values (?,?)";
 			
