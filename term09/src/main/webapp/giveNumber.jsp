@@ -39,7 +39,7 @@
 		<div id="contents">
 			<h2 class="page-title">학번 부여</h2>
 				<br>
-				<form action="addUser.jsp" method="post">
+				<form action="giveNumber.jsp" id="giveNumberForm" method="get">
 					이름 <input type="text" class="plan-input" name="name"><br><br>
 					아이디(학번) <input type="text" class="plan-input" name="name"><br><br>
 					패스워드 <input type="password" class="plan-input" name="password"><br><br>
@@ -55,25 +55,26 @@
 						<option value="1">학생</option>
 					</select><br><br>
 					<div id="course">
-					과정 <input type="text" class="plan-input" name="course"><br><br>
 					</div>
+					<br><br>
+					<input type="submit" class="search-btn" value="추가" >
 			</form>
 		</div>
 	</div>
 </div> 
 <div class="dim"></div>
 <script>
-	$("#course").hide();
+$("#course").html("");
 	$("#select-division").change(function() {
 		var selectedDivision = $("#select-division option:selected").val();
 		if( selectedDivision == 0 ) {
-			$("#course").hide();
+			$("#course").html("");
 		}
 		else if( selectedDivision == 1 ){
-			$("#course").show();
+			$("#course").html('과정 <input type="text" class="plan-input" name="course"><br><br>');
 		}
 		else {
-			$("#course").hide();
+			$("#course").html("");
 		}
 	});
 	
