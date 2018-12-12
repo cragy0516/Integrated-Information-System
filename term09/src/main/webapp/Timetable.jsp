@@ -87,6 +87,7 @@
 											i = 4;
 											break;
 										}
+										
 										int index_j = lecture_start_time - 9;
 										timeTable[index_j][i] = lecture_name;
 										timeTable[index_j + 1][i] = lecture_name;
@@ -101,11 +102,11 @@
 									for (int b = 0; b < 5; b++) {
 										if (timeTable[a][b] != null) {
 											out.print("<td>" + timeTable[a][b] + "</td>");
-										}
-										else {
+										} else {
 											out.print("<td></td>");
 										}
 									}
+									
 									start_time++;
 									end_time++;
 									out.print("</tr>");
