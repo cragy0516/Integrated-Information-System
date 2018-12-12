@@ -66,7 +66,7 @@
 	            				out.print("<td>"+i+"</td>");
 	            				out.print("<td>"+rs.getString("lectureSemester")+"</td>");
 	            				out.print("<td>"+rs.getString("lectureNumber")+"</td>");
-	            				out.print("<td>"+rs.getString("name")+"</td>");
+	            				out.print("<td><a href='planDetails.jsp?lecture="+rs.getString("lectureNumber")+"'>"+rs.getString("name")+"</a></td>");
 	            				out.print("<td>"+rs.getInt("creditHour")+"</td>");
 	            				out.print("<td>"+rs.getString("professor")+"</td>");
 	            				out.print("<td>"+rs.getString("lectureTime")+"</td>");

@@ -51,7 +51,8 @@ public class AuthFilter implements Filter {
 			"Timetable.jsp",
 			"GradeDetails.jsp",
 			"AllGradeDetails.jsp",
-			"ScholarshipList.jsp"
+			"ScholarshipList.jsp",
+			"planDetails.jsp"
 		};
 		final String[] FACULTY_MENU_LIST = {
 			"EnrollmentInformationFaculty.jsp",
