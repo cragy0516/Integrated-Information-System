@@ -22,7 +22,7 @@
 			<li>
 				<a href="#" class="nav-ico4 depth">장학 관리</a>
 				<ul>
-					<li><a href="ScholarshipList.jsp">장학생 등록</a></li>
+					<li><a href="Scholarship.jsp">장학생 등록</a></li>
 				</ul>
 			</li>
 		<li id="logoutLi"><a href="logoutAction.jsp">로그아웃</a></li>

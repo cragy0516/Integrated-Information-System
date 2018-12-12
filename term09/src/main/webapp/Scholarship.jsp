@@ -4,6 +4,21 @@
 <%@ page import="java.sql.Connection" %>
 <%@ page import="java.sql.PreparedStatement" %>
 <%@ page import="java.sql.ResultSet" %>
+<%
+	Object s_name = session.getAttribute("sessionID");
+	Object s_perm = session.getAttribute("sessionPERM");
+	String name = "DEFAULT_NAME";
+	String perm = "DEFAULT_PERMISSION";
+	String perm_tmp = "";
+
+	if (s_name != null && s_perm != null) {
+		name = s_name.toString();
+		perm_tmp = (String) s_perm;
+		if (perm_tmp.equals("faculty")) perm = "교원";
+		else if (perm_tmp.equals("student")) perm = "학생";
+		else if (perm_tmp.equals("admin")) perm = "관리자";
+	}
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko">
 <head>
@@ -17,35 +32,8 @@
 </head>
 <body>
 <div id="wrap">
-	<div id="header">
-		<div class="inner">
-			<a href="#" class="user-select">
-				<span class="name">
-					<strong>이미진</strong>
-					<span>학생</span>
-				</span>
-				<img src="img/good.png" class="thumb" alt="" />
-			</a>
-		</div>
-	</div>
-	<div id="aside">
-		<h1><a href="#">학사정보시스템</a></h1>
-		<ul id="nav">
-			<li>
-				<a href="#" class="nav-ico2 depth">사용자 관리</a>
-				<ul>
-					<li><a href="#">학번 부여</a></li>
-					<li><a href="#">학적 변경</a></li>
-				</ul>
-			</li>
-            <li>
-				<a href="#" class="nav-ico3 depth">장학 관리</a>
-				<ul>
-					<li><a href="#">신규 장학 등록</a></li>
-				</ul>
-			</li>
-		</ul>
-	</div>
+	<jsp:include page="header.jsp"></jsp:include>
+	<jsp:include page="asideAdmin.jsp"></jsp:include>
 	<div id="container">
 		<div id="contents">
 			<h2 class="page-title">신규 장학 등록</h2>
