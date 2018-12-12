@@ -53,6 +53,10 @@ if (s_name != null && s_perm != null) {
 <div class="dim"></div>
 <script>
 function checkValue() {
+	if(document.getElementById("newPassword").value.length < 2 ) {
+		alert("2자 이상의 비밀번호를 입력하세요");
+		return false;
+	}
 	if(!document.getElementById("newPassword").value || !document.getElementById("confirmPassword").value) {
 		alert("비밀번호를 입력하세요");
 		return false;

@@ -3,6 +3,7 @@
 <% request.setCharacterEncoding("UTF-8"); %>
 <%@ page import="Dao.Database" %>
 <%@ page import="Service.subjectService" %>
+<%@ page import="Service.userService" %>
 <%@ page import="java.sql.Connection" %>
 <%@ page import="java.sql.PreparedStatement" %>
 <%@ page import="java.sql.ResultSet" %>
@@ -10,23 +11,28 @@
 	String userID = request.getParameter("userID");
 	String originPassword = request.getParameter("originPassword");
 	String newPassword = request.getParameter("newPassword");
-	
+	userService us = new userService();
 	Database dbCon = new Database();
 	Connection conn = dbCon.GetConnection();
 	boolean result = false;
-	try {
-		String sql = "update user set password=? where id=? and password=?";
-		PreparedStatement ps = conn.prepareStatement(sql);
-		ps.setString(1,newPassword);
-		ps.setString(2,userID);
-		ps.setString(3,originPassword); 
-		ps.executeUpdate(); 
-		 
-		ps.close();
-		conn.close();
-		result = true;
-	} catch(Exception e ) {
-		System.out.print(e.getMessage());
+	String originDB = us.checkOrigin(userID);
+	if( originDB.equals(originPassword)) {
+		try {
+			String sql = "update user set password=? where id=?";
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setString(1,newPassword);
+			ps.setString(2,userID);
+			ps.executeUpdate(); 
+			 
+			ps.close();
+			conn.close();
+			result = true;
+		} catch(Exception e ) {
+			System.out.print(e.getMessage());
+			result = false;
+		}
+	}
+	else {
 		result = false;
 	}
 	
