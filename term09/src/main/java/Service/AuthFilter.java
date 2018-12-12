@@ -64,6 +64,10 @@ public class AuthFilter implements Filter {
 			"PersonalInformaionFaculty.jsp",
 			"ResponsibilitySubject.jsp",
 			"editPersonalInfoAction",
+			"LecturePlan.jsp",
+			"ClassStudent.jsp",
+			"addLecturePlan.jsp",
+			"updategrade.jsp",
 			"UpdatePasswordFaculty.jsp",
 			"editPassword.jsp"
 		};

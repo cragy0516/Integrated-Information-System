@@ -36,10 +36,11 @@
                 <%
 	                	Database dbCon = new Database();
 	            		Connection conn = dbCon.GetConnection();
+	            		String lectureNumber = request.getParameter("lectureNumber");
 	            		try {
 	                		String sql = "select a.studentID, a.grade, b.name from course a, user b where a.studentID = b.id and lectureNumber = ?";
 	            			PreparedStatement ps = conn.prepareStatement(sql);
-	            			ps.setString(1,"14770-01");
+	            			ps.setString(1, lectureNumber);
 	            			ResultSet rs = ps.executeQuery();
 	            			
 	            			int i=1;
