@@ -13,7 +13,7 @@
 	Connection conn = dbCon.GetConnection();
 	boolean result = false;
 	try {
-		String sql = "update scholarship set studentID=?, scholarship = ?, ratio = ?, content = ? where lectureNumber = ?";
+		String sql = "update scholarship set studentID=?, scholarship = ?, ratio = ?, content = ?";
 		PreparedStatement ps = conn.prepareStatement(sql);
 		ps.setString(1,studentID);
 		ps.setString(2,scholarshipName);
