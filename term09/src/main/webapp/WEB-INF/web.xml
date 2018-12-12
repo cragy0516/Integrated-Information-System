@@ -4,4 +4,14 @@
 
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
+  <filter>
+  	<filter-name>AuthFilter</filter-name>
+  	<display-name>AuthFilter</display-name>
+  	<description></description>
+  	<filter-class>Service.AuthFilter</filter-class>
+  </filter>
+  <filter-mapping>
+  	<filter-name>AuthFilter</filter-name>
+  	<url-pattern>*.jsp</url-pattern>
+  </filter-mapping>
 </web-app>

@@ -12,8 +12,6 @@
 		perm_tmp = s_perm.toString();
 		if (perm_tmp == "admin") perm = "관리자";
 		else if (perm_tmp == "user") perm = "학생";
-	} else {
-		// login required
 	}
 %>
 <!DOCTYPE html>

@@ -57,7 +57,6 @@
 			
 			response.getWriter().flush();
 			
-			out.close();
 			ps.close();
 			rs.close();
 			conn.close();
