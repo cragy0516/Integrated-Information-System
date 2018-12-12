@@ -12,7 +12,7 @@
    Database dbCon = new Database();
    Connection conn = dbCon.GetConnection();
    boolean result = false;
-   
+    
    if(studentID.equals("")||scholarshipName.equals("")||semester.equals("")||amount.equals("")){
 	   result = false;
    }else{
