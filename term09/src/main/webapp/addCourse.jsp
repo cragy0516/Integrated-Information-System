@@ -5,6 +5,7 @@
 <%@ page import="java.sql.PreparedStatement" %>
 <%@ page import="java.sql.ResultSet" %>
 <%
+	String userID = request.getParameter("userID");
 	String applyValue = request.getParameter("applyValue");
 	Database dbCon = new Database();
 	Connection conn = dbCon.GetConnection();
@@ -12,7 +13,7 @@
 	try {
 		String sql = "insert into course (studentID,lectureNumber) values (?,?)";
 		PreparedStatement ps = conn.prepareStatement(sql);
-		ps.setString(1,"test");
+		ps.setString(1,userID);
 		ps.setString(2,applyValue);
 		ps.executeUpdate();
 		ps.close();

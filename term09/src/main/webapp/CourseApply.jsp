@@ -5,6 +5,21 @@
 <%@ page import="java.sql.Connection" %>
 <%@ page import="java.sql.PreparedStatement" %>
 <%@ page import="java.sql.ResultSet" %>
+<%
+Object s_name = session.getAttribute("sessionID");
+Object s_perm = session.getAttribute("sessionPERM");
+String name = "DEFAULT_NAME";
+String perm = "DEFAULT_PERMISSION";
+String perm_tmp = "";
+
+if (s_name != null && s_perm != null) {
+	name = s_name.toString();
+	perm_tmp = (String) s_perm;
+	if (perm_tmp.equals("faculty")) perm = "교원";
+	else if (perm_tmp.equals("student")) perm = "학생";
+	else if (perm_tmp.equals("admin")) perm = "관리자";
+}
+%>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="ko">
 <head>
@@ -26,6 +41,7 @@
 			<form action="addCourse.jsp" method="post">
 				학수번호
 				<input type="text" id="applyValue" name="applyValue">
+				<input type="hidden" name="userID" value="<%=name%>">
 				<input type="submit" class="search-btn" value="신청">
 			</form>
 			<br><br>
