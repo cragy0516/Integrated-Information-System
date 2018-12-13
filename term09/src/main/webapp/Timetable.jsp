@@ -129,7 +129,6 @@
 									timeTable[index_j + 1][i] = "contain";
 								}
 							}
-
 							for (int a = 0; a < 15; a++) {
 								out.print("<tr>");
 								out.print(
