@@ -60,12 +60,16 @@
 
 				<%
 					// 해당 학생이 듣는 과목을 가져옴.
-						String sql = "select * from subject where lectureNumber = any(select lectureNumber from course where studentID=?) && lectureSemester =?";
-						PreparedStatement ps = conn.prepareStatement(sql);
-						ps.setString(1, (String) s_name);
-						String semester = request.getParameter("select_semester");
-						ps.setString(2, semester);
-						ResultSet rs = ps.executeQuery();
+					String sql = "select * from subject where lectureNumber = any(select lectureNumber from course where studentID=?) && lectureSemester =?";
+					PreparedStatement ps = conn.prepareStatement(sql);
+					ps.setString(1, (String) s_name);
+					String semester = request.getParameter("select_semester");
+					ps.setString(2, semester);
+					ResultSet rs = ps.executeQuery();
+					
+					if (semester == null) {
+						semester="";
+					}
 				%>
 
 				<h2 class="page-title"><%=semester %> 시간표</h2>
@@ -135,7 +139,6 @@
 										out.print("<td></td>");
 									}
 								}
-
 								start_time++;
 								end_time++;
 								out.print("</tr>");
@@ -150,7 +153,7 @@
 </body>
 </html>
 <%
-	ps.close();
+		ps.close();
 		rs.close();
 		conn.close();
 	} catch (Exception e) {
