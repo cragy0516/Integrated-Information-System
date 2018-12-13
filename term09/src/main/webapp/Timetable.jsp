@@ -16,6 +16,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <title>시간표</title>
 <link rel="stylesheet" type="text/css" href="css/common.css" />
+<link rel="stylesheet" type="text/css" href="css/timetable.css" />
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script type="text/javascript" src="js/jquery-ui.min.js"></script>
@@ -92,6 +93,8 @@
 							String timeTable[][] = new String[15][5]; // 시간표를 담는 배열
 							String day_per_sub[] = null;
 							String lecture_name = null;
+							Random random = new Random();
+							int table_color = 0;
 
 							while (rs.next()) { // 과목을 하나 선택
 								lecture_name = rs.getString("name"); // 과목명
@@ -123,7 +126,7 @@
 									}
 									int index_j = lecture_start_time - 9;
 									timeTable[index_j][i] = lecture_name;
-									timeTable[index_j + 1][i] = lecture_name;
+									timeTable[index_j + 1][i] = "contain";
 								}
 							}
 
@@ -133,8 +136,11 @@
 											"<td>" + String.valueOf(start_time) + ":00~" + String.valueOf(end_time) + ":00" + "</td>");
 
 								for (int b = 0; b < 5; b++) {
-									if (timeTable[a][b] != null) {
-										out.print("<td>" + timeTable[a][b] + "</td>");
+									if (timeTable[a][b] != null && timeTable[a][b] != "contain") {
+										out.print("<td rowspan='2'>" + timeTable[a][b] + "</td>");
+										
+									} else if (timeTable[a][b] == "contain") {
+										
 									} else {
 										out.print("<td></td>");
 									}
