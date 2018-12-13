@@ -25,19 +25,16 @@
 	try {
 		String sql = "update user set address=?, phone=?, email=? where id='" + id + "'";
 		PreparedStatement ps = conn.prepareStatement(sql);
+		if (address == null) address = "";
+		if (phone == null) phone = "";
 		
-		if (address.equals("") || phone.equals("") || email.equals("")) {
-			response.getWriter().print("<script> alert(\"필수 입력값이 누락되었습니다.\");");
-			response.getWriter().print("window.location.href='" + location + "' </script>");
-		} else {
-			ps.setString(1, address);
-			ps.setString(2, phone);
-			ps.setString(3, email);
-			
-			ps.executeUpdate();
-			response.getWriter().print("<script> alert(\"갱신 완료\");");
-			response.getWriter().print("window.location.href='" + location + "' </script>");
-		}
+		ps.setString(1, address);
+		ps.setString(2, phone);
+		ps.setString(3, email);
+		
+		ps.executeUpdate();
+		response.getWriter().print("<script> alert(\"갱신 완료\");");
+		response.getWriter().print("window.location.href='" + location + "' </script>");
 		
 		ps.close();
 		conn.close();

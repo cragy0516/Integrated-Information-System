@@ -6,6 +6,8 @@
 <%@ page import="java.sql.PreparedStatement" %>
 <%@ page import="java.sql.ResultSet" %>
 <%
+String searchOption = request.getParameter("option");
+String searchValue = request.getParameter("search"); 
 Object s_name = session.getAttribute("sessionID");
 Object s_perm = session.getAttribute("sessionPERM");
 String name = "DEFAULT_NAME";
@@ -38,13 +40,23 @@ if (s_name != null && s_perm != null) {
 	<div id="container">
 		<div id="contents">
 			<h2 class="page-title">수강 신청</h2>
+			<div id="colForm">
 			<form action="addCourse.jsp" method="post">
-				학수번호
 				<input type="text" id="applyValue" name="applyValue">
 				<input type="hidden" name="userID" value="<%=name%>">
 				<input type="submit" class="search-btn" value="신청">
 			</form>
-			<br><br>
+			<form action="CourseApply.jsp" method="get">
+				<select name="option">
+					<option value="0">학수번호</option>
+					<option value="1">과목명</option>
+				</select>
+				<input type="text" name="search">
+				<input type="submit" class="search-btn" value="검색">
+			</form>
+			</div>
+			<br>
+			<br>
             <table id="grade-table">
                 <thead>
                     <tr>
@@ -59,11 +71,13 @@ if (s_name != null && s_perm != null) {
                 </thead>
                 <tbody>
                 	<%
-                
+                	
+                	if( searchValue == "" || searchValue == null){
 	                	Database dbCon = new Database();
 	            		Connection conn = dbCon.GetConnection();
+	            		
 	            		try {
-	                		String sql = "select * from subject where lectureSemester='2018/2학기'";
+	                		String sql = "select * from subject";
 	            			PreparedStatement ps = conn.prepareStatement(sql);
 	            			ResultSet rs = ps.executeQuery();
 	            			int i=1;
@@ -72,7 +86,7 @@ if (s_name != null && s_perm != null) {
 	            				out.print("<tr>");
 	            				out.print("<td>"+i+"</td>");
 	            				out.print("<td>"+rs.getString("lectureSemester")+"</td>");
-	            				out.print("<td>"+rs.getString("lectureNumber")+"</a></td>");
+	            				out.print("<td>"+rs.getString("lectureNumber")+"</td>");
 	            				out.print("<td><a href='planDetails.jsp?lecture="+rs.getString("lectureNumber")+"'>"+rs.getString("name")+"</a></td>");
 	            				out.print("<td>"+rs.getInt("creditHour")+"</td>");
 	            				out.print("<td>"+rs.getString("professor")+"</td>");
@@ -87,6 +101,69 @@ if (s_name != null && s_perm != null) {
 	            		catch(Exception e ) {
 	            			System.out.print(e.getMessage());
 	            		}
+                	}
+                	else {
+                		if( searchOption.equals("0") ) { // 학수번호로 검색
+                			Database dbCon = new Database();
+    	            		Connection conn = dbCon.GetConnection();
+    	            		
+    	            		try {
+    	                		String sql = "select * from subject where lectureNumber like '"+searchValue+"%'";
+    	            			PreparedStatement ps = conn.prepareStatement(sql);
+    	            			ResultSet rs = ps.executeQuery();
+    	            			int i=1;
+    	            			
+    	            			while(rs.next()) {
+    	            				out.print("<tr>");
+    	            				out.print("<td>"+i+"</td>");
+    	            				out.print("<td>"+rs.getString("lectureSemester")+"</td>");
+    	            				out.print("<td>"+rs.getString("lectureNumber")+"</td>");
+    	            				out.print("<td><a href='planDetails.jsp?lecture="+rs.getString("lectureNumber")+"'>"+rs.getString("name")+"</a></td>");
+    	            				out.print("<td>"+rs.getInt("creditHour")+"</td>");
+    	            				out.print("<td>"+rs.getString("professor")+"</td>");
+    	            				out.print("<td>"+rs.getString("lectureTime")+"</td>");
+    	            				out.print("</tr>");
+    	            				i++;
+    	            			}
+    	            			ps.close();
+    	            			rs.close();
+    	            			conn.close();
+    	            		}
+    	            		catch(Exception e ) {
+    	            			System.out.print(e.getMessage());
+    	            		}
+                		}
+                		else if( searchOption.equals("1") ) { // 과목명으로 검색
+                			Database dbCon = new Database();
+    	            		Connection conn = dbCon.GetConnection();
+    	            		
+    	            		try {
+    	                		String sql = "select * from subject where name like '"+searchValue+"%'";
+    	            			PreparedStatement ps = conn.prepareStatement(sql);
+    	            			ResultSet rs = ps.executeQuery();
+    	            			int i=1;
+    	            			
+    	            			while(rs.next()) {
+    	            				out.print("<tr>");
+    	            				out.print("<td>"+i+"</td>");
+    	            				out.print("<td>"+rs.getString("lectureSemester")+"</td>");
+    	            				out.print("<td>"+rs.getString("lectureNumber")+"</td>");
+    	            				out.print("<td><a href='planDetails.jsp?lecture="+rs.getString("lectureNumber")+"'>"+rs.getString("name")+"</a></td>");
+    	            				out.print("<td>"+rs.getInt("creditHour")+"</td>");
+    	            				out.print("<td>"+rs.getString("professor")+"</td>");
+    	            				out.print("<td>"+rs.getString("lectureTime")+"</td>");
+    	            				out.print("</tr>");
+    	            				i++;
+    	            			}
+    	            			ps.close();
+    	            			rs.close();
+    	            			conn.close();
+    	            		}
+    	            		catch(Exception e ) {
+    	            			System.out.print(e.getMessage());
+    	            		}
+                		}
+                	}
                 	%>
                 </tbody>
             </table>

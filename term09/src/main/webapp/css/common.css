@@ -722,3 +722,12 @@ fieldset > * {float:left; margin-right:20px;}
 #passwordForm > input{
 	width:100%;
 }
+
+#colForm > form {
+	float:left;
+	margin-bottom:20px;
+}
+
+#colForm > form:nth-child(2) {
+	margin-left:50px;
+}
